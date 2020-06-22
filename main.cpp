@@ -6,7 +6,8 @@ int main(int argc, char *argv[])
 {
     auto app = Gtk::Application::create(argc, argv, "org.gtkmm.example");
 
-    //Load the Glade file and instantiate its widgets:
+    //Загрузка файла описания пользовательского интерфейса с помощью экземпляра класса Gtk::Builder
+    // и создание экземпляров классов описанных в этом файле виджетов:
     auto refBuilder = Gtk::Builder::create();
     try
     {
@@ -30,6 +31,7 @@ int main(int argc, char *argv[])
 
 
     MainWindow* pMainWindow = nullptr;
+    //Получение созданного с помощью объекта типа Gtk::Builder экземпляра класса окна:
     refBuilder->get_widget_derived("mnWindow", pMainWindow);
 
     if(pMainWindow)

@@ -14,6 +14,6 @@ include_directories(
 
 
 
-add_executable(windowApp main.cpp MainWindow.cpp)
+add_executable(windowApp main.cpp MainWindow.cpp AddIPModal.cpp AddIPModal.h)
 
 target_link_libraries(windowApp ${GTKMM_LIBRARIES})

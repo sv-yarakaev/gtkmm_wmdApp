@@ -8,6 +8,11 @@
 #include <iostream>
 #include <gtkmm.h>
 #include <gtkmm/comboboxtext.h>
+#include <gtkmm/application.h>
+
+
+
+#include "AddIPModal.h"
 
 class MainWindow : public Gtk::Window {
 public:
@@ -21,6 +26,12 @@ protected:
     void on_comboIP_changed();
     void on_entry_changed();
     void on_entryIP_has_focus_changed();
+    void on_entry_activate();
+    bool on_entry_focus_out_event(GdkEventFocus* );
+    void on_entry_has_focus_changed();
+    sigc::connection m_ConnectionHasFocusChanged;
+
+
     Glib::RefPtr<Gtk::Builder> m_refGlade;
     Gtk::Dialog *m_addIPWindow;
     Gtk::Button *m_pButton;
@@ -29,10 +40,11 @@ protected:
     Gtk::TextView *m_pViewLog;
     Glib::RefPtr<Gtk::TextBuffer> m_refTextBuffer1, m_refTextBuffer2;
     Gtk::TextBuffer::iterator iter; //find my seek
-
+    sigc::connection m_ConnectionFocusOut;
     Gtk::Button *m_pbtnLoad;
     Gtk::Entry *m_pEntryIPAddress;
-    sigc::connection m_ConnectionHasFocusChanged; //for comboboxtext changes
+    Gtk::Entry *entry;
+    //sigc::connection m_ConnectionHasFocusChanged; //for comboboxtext changes
     bool m_entry_had_focus {false};
 
 private:
