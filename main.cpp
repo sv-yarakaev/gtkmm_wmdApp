@@ -11,7 +11,11 @@ int main(int argc, char *argv[])
     auto refBuilder = Gtk::Builder::create();
     try
     {
-        refBuilder->add_from_file("ui_main.glade");
+        //refBuilder->add_from_file("ui_main.glade");
+        // Загрузка из ресурса. Предварительно необходимо скомпилировать файл ресурса res.xml и получить файл resources.c
+        // Файл ресурса автоматически добавляется в бинарное приложение
+        // glib-compile-resources --target=resources.c --generate-source res.xml
+        refBuilder->add_from_resource("/ui/ui_main.glade"); //TODO добавить автокомпиляцию ресурса в CMake
     }
     catch(const Glib::FileError& ex)
     {

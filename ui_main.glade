@@ -188,6 +188,7 @@
                   <object class="GtkBox">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="spacing">1</property>
                     <child>
                       <object class="GtkComboBoxText" id="comboIPAddr">
                         <property name="visible">True</property>
@@ -317,6 +318,7 @@
                   <object class="GtkBox">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="spacing">1</property>
                     <child>
                       <object class="GtkComboBoxText">
                         <property name="visible">True</property>
@@ -376,8 +378,8 @@
             <property name="homogeneous">True</property>
             <property name="layout_style">start</property>
             <child>
-              <object class="GtkButton">
-                <property name="label" translatable="yes">button</property>
+              <object class="GtkButton" id="btnLoa">
+                <property name="label" translatable="yes">Load EQV</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
@@ -389,8 +391,8 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton">
-                <property name="label" translatable="yes">button</property>
+              <object class="GtkButton" id="btnInstallEqv">
+                <property name="label" translatable="yes">Install EQV</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
@@ -403,7 +405,7 @@
             </child>
             <child>
               <object class="GtkButton">
-                <property name="label" translatable="yes">button</property>
+                <property name="label" translatable="yes">Uninstall EQV</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>

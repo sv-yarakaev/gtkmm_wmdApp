@@ -22,16 +22,16 @@ MainWindow::MainWindow(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>
     }
 
 
-    //m_pComboBoxIPAddr = new GtkComboBoxText (true);
+
     m_refGlade->get_widget("comboIPAddr", m_pComboBoxIPAddr);
-    //m_pComboBoxIPAddr->get_has_entry();
+
 
     m_pComboBoxIPAddr->signal_changed().connect(sigc::mem_fun(*this,
                                                               &MainWindow::on_comboIP_changed) );
 
     m_refGlade->get_widget("viewLog", m_pViewLog);
     m_refGlade->get_widget("btnLoad", m_pbtnLoad);
-    //m_refGlade->get_widget("editIPAddr", m_pEntryIPAddress);
+
     m_pEntryIPAddress = m_pComboBoxIPAddr->get_entry();
 
     m_pbtnLoad->signal_clicked().connect(sigc::mem_fun(*this, &MainWindow::on_button_Load));
@@ -152,3 +152,4 @@ void MainWindow::on_entry_has_focus_changed() {
         m_entry_had_focus = entry_has_focus;
     }
 }
+
