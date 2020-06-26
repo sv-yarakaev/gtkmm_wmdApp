@@ -1,7 +1,10 @@
 cmake_minimum_required(VERSION 3.10)
 project(windowApp)
 
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 11)
+
+
+
 
 find_package(PkgConfig)
 pkg_check_modules(GTKMM gtkmm-3.0)
@@ -12,8 +15,16 @@ link_directories(
 include_directories(
         ${GTKMM_INCLUDE_DIRS}  )
 
+set(RESOURCE_XML
+        "res.xml" )
+
+add_custom_command( OUTPUT ${RESOURCE_XML}
+        COMMAND ${CMAKE_COMMAND} -E glib-compile-resources --target=resources.c --generate-source ${RESOURCE_XML}
+        VERBATIM
+)
 
 
-add_executable(windowApp main.cpp MainWindow.cpp  resources.c)
 
-target_link_libraries(windowApp ${GTKMM_LIBRARIES})
+add_executable(windowApp main.cpp MainWindow.cpp  resources.c utils.cpp )
+
+target_link_libraries(windowApp ${GTKMM_LIBRARIES} )

@@ -3,4 +3,7 @@
     <gresource prefix="ui"> <!-- идентификатор ресурса: /ui/ui_main.glade   -->
         <file preprocess="xml-stripblanks">ui_main.glade</file>
     </gresource>
+    <gresource prefix="text-data">
+        <file>up.exp</file>
+    </gresource>
 </gresources>

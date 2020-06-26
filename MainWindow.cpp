@@ -6,9 +6,7 @@
 MainWindow::MainWindow(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& refGlade)
         : Gtk::Window(cobject),
           m_refGlade(refGlade),
-          //m_pComboBoxIPAddr(true),
           m_pButton(nullptr),
-          //m_pComboBoxIPAddr(nullptr),
           m_pViewLog(nullptr),
           m_pbtnLoad(nullptr),
           iter(nullptr)
@@ -68,8 +66,7 @@ MainWindow::MainWindow(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>
 
 MainWindow::~MainWindow()
 {
-    m_ConnectionHasFocusChanged.disconnect();
-    delete m_addIPWindow;
+
 }
 
 void MainWindow::on_button_quit()
@@ -83,9 +80,12 @@ void MainWindow::on_button_quit()
 
 void MainWindow::on_button_Load() {
 
-    m_pComboBoxIPAddr->get_active_text();
+    m_pComboBoxIPAddr->get_active_text(); //TODO добавить проверку IP
     std::string out = "IP address button load is clicked " + m_pComboBoxIPAddr->get_active_text() + "\n";
     writeToLog(out);
+
+    writeToLog(exec("uname -a"));
+
 
 }
 

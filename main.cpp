@@ -16,6 +16,8 @@ int main(int argc, char *argv[])
         // Файл ресурса автоматически добавляется в бинарное приложение
         // glib-compile-resources --target=resources.c --generate-source res.xml
         refBuilder->add_from_resource("/ui/ui_main.glade"); //TODO добавить автокомпиляцию ресурса в CMake
+
+
     }
     catch(const Glib::FileError& ex)
     {

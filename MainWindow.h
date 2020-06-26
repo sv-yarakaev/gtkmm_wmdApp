@@ -10,6 +10,7 @@
 #include <gtkmm/comboboxtext.h>
 #include <gtkmm/application.h>
 
+#include "utils.h"
 
 
 
@@ -49,6 +50,7 @@ protected:
 
 private:
     void writeToLog(std::string);
+    void init();
 };
 
 
