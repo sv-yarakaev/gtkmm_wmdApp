@@ -13,6 +13,7 @@
 #include <gtkmm/application.h>
 
 #include "utils.h"
+#include "mColumns.h"
 
 
 
@@ -33,6 +34,7 @@ protected:
     void on_entry_activate();
     bool on_entry_focus_out_event(GdkEventFocus* );
     void on_entry_has_focus_changed();
+    void on_treeview_row_activated(const Gtk::TreeModel::Path& path, Gtk::TreeViewColumn* column);
 
     sigc::connection m_ConnectionHasFocusChanged;
 
@@ -49,6 +51,15 @@ protected:
     Gtk::Button *m_pbtnLoad;
     Gtk::Entry *m_pEntryIPAddress;
     Gtk::Entry *entry;
+
+    ModelColumns m_Columns;
+    Glib::RefPtr<Gtk::ListStore> refListStore;
+
+    Gtk::ScrolledWindow m_ScrolledWindow;
+    //Tree models
+    Gtk::TreeView m_TreeView;
+    Glib::RefPtr<Gtk::TreeStore> m_refTreeModel;
+
 
     bool m_entry_had_focus {false};
 

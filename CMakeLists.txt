@@ -25,6 +25,6 @@ add_custom_command( OUTPUT ${RESOURCE_XML}
 
 
 
-add_executable(windowApp main.cpp MainWindow.cpp  resources.c utils.cpp redir_output.cpp )
+add_executable(windowApp main.cpp MainWindow.cpp  resources.c utils.cpp redir_output.cpp mColumns.cpp )
 
 target_link_libraries(windowApp ${GTKMM_LIBRARIES} )

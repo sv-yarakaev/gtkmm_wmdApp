@@ -58,6 +58,7 @@ MainWindow::MainWindow(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>
     m_pComboBoxIPAddr->set_sensitive(true);
     m_pEntryIPAddress->set_sensitive(true);
 
+    refListStore = Gtk::ListStore::create(m_Columns);
 
     show_all();
 
