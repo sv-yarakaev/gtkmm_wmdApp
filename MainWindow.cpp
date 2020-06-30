@@ -11,6 +11,7 @@ MainWindow::MainWindow(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>
           m_pbtnLoad(nullptr),
           iter(nullptr)
 {
+    init();
     set_title("Proto for loader MPC-L");
     //Get the Glade-instantiated Button, and connect a signal handler:
     m_refGlade->get_widget("btnQuit", m_pButton);
@@ -46,10 +47,9 @@ MainWindow::MainWindow(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>
     iter = m_refTextBuffer1->get_iter_at_offset(0);
 
     iter = m_refTextBuffer1->insert (iter, "Create and running interface for load\n");
-    //iter = m_refTextBuffer1->get_iter_at_offset(0);
     m_pViewLog->set_buffer(m_refTextBuffer1);
 
-    //m_pComboBoxIPAddr->property_has_frame() = false;
+
     //TODO Remove its appneds
 //    m_pComboBoxIPAddr->append("10.243.12.178"); m_pComboBoxIPAddr->append("10.243.12.179");
 //    m_pComboBoxIPAddr->append("10.243.12.180"); m_pComboBoxIPAddr->append("10.243.12.181");
@@ -85,6 +85,8 @@ void MainWindow::on_button_Load() {
     writeToLog(out);
 
     writeToLog(exec("uname -a"));
+    auto txt = Gio::Resource::lookup_data_global("/test-data/up.exp");
+
 
 
 }
@@ -128,7 +130,7 @@ void MainWindow::on_entry_activate() {
 
 bool MainWindow::on_entry_focus_out_event(GdkEventFocus* /* event */)
 {
-    //Gtk::Entry* entry = m_pComboBoxIPAddr->get_entry();
+
     if (entry)
     {
         std::cout << "on_entry_focus_out_event(): Строка модели=" << m_pComboBoxIPAddr->get_active_row_number()
@@ -139,13 +141,13 @@ bool MainWindow::on_entry_focus_out_event(GdkEventFocus* /* event */)
 }
 
 void MainWindow::on_entry_has_focus_changed() {
-    //Gtk::Entry* entry = m_pComboBoxIPAddr->get_entry();
+
     if (entry)
     {
         const bool entry_has_focus = entry->has_focus();
         if (m_entry_had_focus && !entry_has_focus)
         {
-            // entry->has_focus() has changed from true to false; entry has lost focus.
+
             std::cout << "on_entry_has_focus_changed() to not focused: Row="
                       << m_pComboBoxIPAddr->get_active_row_number() << ", ID=" << entry->get_text() << std::endl;
         }
@@ -153,3 +155,8 @@ void MainWindow::on_entry_has_focus_changed() {
     }
 }
 
+
+void MainWindow::init() {
+    constexpr auto mode = std::ios::in | std::ios::out;
+    settings = std::fstream ("/home/tech/.loaderset", mode);
+}

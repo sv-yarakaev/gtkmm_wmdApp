@@ -5,9 +5,10 @@
 #include "utils.h"
 
 
-
+//Шедевр!!!111111
+//еще раз ШЕДЕВР!
 std::string exec(const char *cmd) {
-    std::array<char, 128> buffer;
+    std::array<char, 128> buffer = {0};
     std::string result;
     std::unique_ptr<FILE, decltype(&pclose)> pipe(popen(cmd, "r"), pclose);
     if (!pipe) {

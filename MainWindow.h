@@ -6,6 +6,8 @@
 #define WINDOWAPP_MAINWINDOW_H
 
 #include <iostream>
+#include <fstream>
+
 #include <gtkmm.h>
 #include <gtkmm/comboboxtext.h>
 #include <gtkmm/application.h>
@@ -22,6 +24,7 @@ public:
 
     virtual ~MainWindow();
 protected:
+    //TODO Убрать неиспользуемые методы
     void on_button_quit();
     void on_button_Load();
     void on_comboIP_changed();
@@ -30,6 +33,7 @@ protected:
     void on_entry_activate();
     bool on_entry_focus_out_event(GdkEventFocus* );
     void on_entry_has_focus_changed();
+
     sigc::connection m_ConnectionHasFocusChanged;
 
 
@@ -45,10 +49,11 @@ protected:
     Gtk::Button *m_pbtnLoad;
     Gtk::Entry *m_pEntryIPAddress;
     Gtk::Entry *entry;
-    //sigc::connection m_ConnectionHasFocusChanged; //for comboboxtext changes
+
     bool m_entry_had_focus {false};
 
 private:
+    std::fstream settings;
     void writeToLog(std::string);
     void init();
 };

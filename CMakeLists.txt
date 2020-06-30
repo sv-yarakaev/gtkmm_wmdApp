@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.10)
 project(windowApp)
 
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 17)
 
 
 
@@ -25,6 +25,6 @@ add_custom_command( OUTPUT ${RESOURCE_XML}
 
 
 
-add_executable(windowApp main.cpp MainWindow.cpp  resources.c utils.cpp )
+add_executable(windowApp main.cpp MainWindow.cpp  resources.c utils.cpp redir_output.cpp )
 
 target_link_libraries(windowApp ${GTKMM_LIBRARIES} )
